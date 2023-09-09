@@ -32,14 +32,15 @@ public class UserService implements IUserService{
         user.setTrack(track);
         user.setCurrentDayOfWeek(getDayOfWeek());
         user.setCurrentUTCTime(getCurrentUtcTime());
-        user.setGithubUrlFile();
+        user.setGithubFileUrl(getGithubFileUrl());
+        user.setGithubSourcecodeUrl(getGithubRepoUrl());
 
         responseCode = ResponseCode.SUCCESS;
-        responseMessage = messageProvider.getMessage(responseCode)
+        responseMessage = messageProvider.getMessage(responseCode);
         PayloadResponse response = PayloadResponse.getInstance();
         response.setResponseCode(responseCode);
         response.setResponseMessage(responseMessage);
-        response.setResponseData(getCurrentUtcTime());
+        response.setResponseData(user);
         return response;
     }
     private String getDayOfWeek(){
@@ -55,5 +56,14 @@ public class UserService implements IUserService{
         Instant instant = Instant.now();
         d1 = instant.toString();
         return d1;
+    }
+    private String getGithubFileUrl(){
+        String githubFileUrl = "https://github.com/Olasubomi1/hngtask1/tree/main/src/main/java/com/hng/hngtaskone";
+        return githubFileUrl;
+    }
+
+    private String getGithubRepoUrl(){
+        String githubFileUrl = "https://github.com/Olasubomi1/hngtask1";
+        return githubFileUrl;
     }
 }

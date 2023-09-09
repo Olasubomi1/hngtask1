@@ -8,6 +8,6 @@ public class User {
     private String track;
     private String currentDayOfWeek;
     private String currentUTCTime;
-    private String githubUrlFile;
-    private String githubUrlSourcecode;
+    private String githubFileUrl;
+    private String githubSourcecodeUrl;
 }

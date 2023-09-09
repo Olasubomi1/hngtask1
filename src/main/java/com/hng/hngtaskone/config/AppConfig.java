@@ -27,17 +27,17 @@ public class AppConfig {
         return messageSource;
     }
 
-    @Bean
-    public ResourceBundleMessageSource envSource() {
-        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        YamlPropertiesFactoryBean bean = new YamlPropertiesFactoryBean();
-        bean.setResources(new ClassPathResource(".env"));
-        messageSource.setCommonMessages(bean.getObject());
-        messageSource.setUseCodeAsDefaultMessage(true);
-        messageSource.setDefaultEncoding("UTF-8");
-        messageSource.setCacheSeconds(0);
-        return messageSource;
-    }
+//    @Bean
+//    public ResourceBundleMessageSource envSource() {
+//        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+//        YamlPropertiesFactoryBean bean = new YamlPropertiesFactoryBean();
+//        bean.setResources(new ClassPathResource(".env"));
+//        messageSource.setCommonMessages(bean.getObject());
+//        messageSource.setUseCodeAsDefaultMessage(true);
+//        messageSource.setDefaultEncoding("UTF-8");
+//        messageSource.setCacheSeconds(0);
+//        return messageSource;
+//    }
 
 
 }
