@@ -13,9 +13,11 @@ public class Controller {
     @Autowired
     private IUserService userService;
 
+
+
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ServerResponse> handleGetUser(@RequestParam(value = "slackName") String slackName, @RequestParam(value = "track") String track){
-        ServerResponse serverResponse = userService.getUser(slackName, track);
+    public ResponseEntity<ServerResponse> handleGetUser(@RequestParam(value = "slack_name") String slack_name, @RequestParam(value = "track") String track){
+        ServerResponse serverResponse = userService.getUser(slack_name, track);
         return ResponseEntity.ok(serverResponse);
     }
 }
