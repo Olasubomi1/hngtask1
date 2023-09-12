@@ -1,14 +1,8 @@
-FROM ubuntu:latest AS build
-RUN apt-get update
-RUN apt-get install openjdk-17-jdk -y
-#COPY . .
-RUN mvn spring-boot:run
+FROM maven:3.8.5-openjdk-17 AS build
+COPY . .
+RUN mvn clean package -DskipTests
 
+FROM openjdk:17.0.1-jdk-slim
+COPY --from=build /target/hngtaskone-0.0.1-SNAPSHOT.jar hngtaskone.jar
 EXPOSE 8090
-#LABEL authors="user"
-#VOLUME /tmp
-#ARG JAR_FILE=target/spring-boot-docker.jar
-#ADD ${JAR_FILE} app.jar
-CMD ["java","-Djava.security.egd=file:/dev/./urandom", "-jar", "/app.jar"]
-#ENTRYPOINT ["java","-jar","/app.jar"]
-#ENTRYPOINT ["top", "-b"]
+ENTRYPOINT ["java","-jar","hngtaskone.jar"]
